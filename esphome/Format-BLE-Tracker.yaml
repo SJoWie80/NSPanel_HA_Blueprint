@@ -1,0 +1,19 @@
+# Adding external component to build:
+external_components:
+  source: github://formatBCE/ESP32_BLE_presense@main
+
+# Initializing it:
+esp32_ble_presense:
+  area: "Living room" # Replace this with your room name
+
+# MQTT config - required for this component to work:
+mqtt:
+  broker: 192.168.101.102 # TODO replace with your MQTT server IP
+  username: !secret mqtt_user # TODO replace with your MQTT user or remove
+  password: !secret mqtt_password # TODO replace with your MQTT password or remove
+  discovery: true
+
+# System time config - required for precise timestamps, used in integration:
+time:
+  - platform: homeassistant
+    id: homeassistant_time
